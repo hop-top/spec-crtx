@@ -1,0 +1,30 @@
+// markdownlint-cli2 config for spec-crtx.
+//
+// We lint prose for genuine quality issues but permit:
+//   - long lines (specs cite full URLs + JSON pointers; wrapping hurts diffability)
+//   - inline HTML (GitHub alert blocks > [!WARNING] and similar)
+//   - non-aligned tables (specs/v0.1/envelope.md uses compact-style tables
+//     with long cell content; forcing column alignment churns the file
+//     every time a row grows)
+//   - missing blank line around headings/lists in CHANGELOG (Keep-a-Changelog
+//     style packs `### Added` directly above its list)
+//   - fenced blocks without a language: spec uses unlabeled fences for
+//     pure grammar/notation snippets (e.g. topic-naming form), not code
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD033": false,
+    "MD060": false,
+    "MD022": false,
+    "MD032": false,
+    "MD040": false
+  },
+  "globs": [
+    "**/*.md"
+  ],
+  "ignores": [
+    "node_modules",
+    "specs/v*/examples/**"
+  ]
+}

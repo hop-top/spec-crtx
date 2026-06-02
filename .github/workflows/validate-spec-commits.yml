@@ -1,0 +1,24 @@
+name: validate-spec-commits
+
+on:
+  pull_request:
+    paths:
+      - "specs/**"
+
+permissions:
+  contents: read
+
+jobs:
+  spec-commit-rules:
+    name: spec commit rules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enforce per-version isolation and stable-version invariants
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python3 .github/scripts/validate_spec_commits.py

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "separate-pull-requests": true,
+  "pull-request-title-pattern": "chore(release):${component} ${version}",
+  "include-component-in-tag": true,
+  "tag-separator": "/",
+  "label": "status:release-pending",
+  "release-label": "status:release-tagged",
+  "changelog-sections": [
+    {"type": "feat", "section": "Features"},
+    {"type": "fix", "section": "Fixes"},
+    {"type": "docs", "section": "Documentation"},
+    {"type": "chore", "section": "Miscellaneous", "hidden": true},
+    {"type": "test", "section": "Tests", "hidden": true},
+    {"type": "ci", "section": "CI", "hidden": true}
+  ],
+  "packages": {
+    "specs/v0.1": {
+      "release-type": "simple",
+      "component": "crtx-v0.1",
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": true,
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "alpha.0"
+    }
+  }
+}

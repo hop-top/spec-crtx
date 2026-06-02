@@ -1,0 +1,15 @@
+# Tooling
+node_modules/
+.venv/
+__pycache__/
+
+# Generated artifacts
+/dist
+/build
+*.log
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+.DS_Store

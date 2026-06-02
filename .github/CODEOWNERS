@@ -1,0 +1,5 @@
+# Default owner for everything.
+* @jadb
+
+# Specs require codeowner review explicitly.
+/specs/** @jadb
