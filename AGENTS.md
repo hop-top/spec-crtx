@@ -1,8 +1,11 @@
 # crtx — agent steering
 
 This repository owns the **language-agnostic** specification for AI
-agent conversations. It ships no executable code (except validators
-and CI helpers under `.github/scripts/`).
+agent conversations. It ships no executable code (except the schema
+validator under `.github/scripts/`). The spec-versioning gates — commit
+rules, status lines, the version-literal guard, the release preflight —
+are the org's shared workflows, called from `.github/workflows/` and
+pinned `@v0`.
 
 ## Editing rules
 
