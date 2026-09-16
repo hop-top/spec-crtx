@@ -9,7 +9,7 @@ MARKDOWNLINT ?= markdownlint-cli2
 PY_DEPS := jsonschema[format]==4.25.1
 MD_GLOBS := **/*.md \#node_modules \#specs/v*/examples/**
 
-.PHONY: help lint lint-md lint-schema test-scripts ci check-tools
+.PHONY: help lint lint-md lint-schema ci check-tools
 
 help: ## Show this help.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  %-16s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -32,10 +32,7 @@ lint-schema: ## Validate JSON schemas and example envelopes/events.
 	}
 	$(PYTHON) .github/scripts/validate_specs.py
 
-test-scripts: ## Run unit tests for .github/scripts.
-	$(PYTHON) -m unittest discover -s .github/scripts/tests -v
-
-ci: lint test-scripts ## Run everything CI runs (lint + tests).
+ci: lint ## Run everything CI runs locally (lint). Spec-versioning gates run in CI from hop-top/.github.
 
 check-tools: ## Report which tools are installed.
 	@printf 'python:        '; command -v $(PYTHON) || echo MISSING
